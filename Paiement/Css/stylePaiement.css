@@ -1,0 +1,198 @@
+.cards {
+  height: 50px;
+}
+.global-premier-div {
+  display: grid;
+  padding: 70px;
+  grid-template-columns: 90% 20%;
+  grid-gap: 150px;
+  margin-left: 110px;
+}
+.div-paiement {
+}
+.div-panier {
+  margin-top: 120px;
+  width: 300px;
+}
+.cordonnees-formulaire {
+  margin-bottom: 30px;
+}
+.cordonnees-formulaire h1 {
+  margin-bottom: 10px;
+}
+/*input {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  font-size: 15px;
+}*/
+input[type="text"] {
+  display: block;
+  width: 100%;
+  font-size: 15px;
+
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px; /* Add some rounded corners */
+}
+
+.obligatoire {
+  color: red;
+  font-size: 18px;
+  position: relative;
+  left: 5px;
+  top: 2px;
+}
+input:hover {
+  box-shadow: 0px 10px 30px #abc4aa;
+  transition: all 0.3s ease;
+}
+select {
+  font-family: Arial, sans-serif; /* Set the font family */
+  font-size: 12px; /* Set the font size */
+  padding: 8px; /* Add some padding to the select element */
+  border: 2px solid #ccc; /* Add a border with a gray color */
+  border-radius: 4px; /* Add some rounded corners */
+  background-color: #fff; /* Set a white background color */
+  height: 50px;
+  padding-top: 25px;
+  width: 100%;
+  color: #333; /* Set the font color to a dark gray */
+  max-height: 100px; /* Définit une hauteur maximale de 150 pixels pour la zone déroulante */
+  overflow-y: auto; /* Ajoute une barre de défilement verticale si nécessaire */
+}
+.fa-question-circle {
+}
+.methodes-paiement {
+  display: grid;
+  grid-template-columns: 152px 17px 100px 17px 100px 17px 100px;
+  grid-gap: 10px;
+  margin-bottom: 30px;
+}
+input[type="radio"] {
+  margin-top: 4px;
+}
+.methodes-paiement p {
+  margin-left: 6px;
+
+  font-size: 18px;
+}
+.carte-acceptees {
+  text-align: center;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.img-achat img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  border: 2px solid rgb(211, 210, 224);
+}
+.article-achete {
+  display: grid;
+  grid-template-columns: 150px 150px 100px;
+  margin-bottom: 20px;
+}
+.nombre-achat {
+  float: right;
+  background-color: rgb(69, 69, 69, 0.8);
+  border-radius: 100%;
+  font-family: inherit;
+
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  color: #fff;
+  font-size: 14px;
+}
+#ville {
+  display: inline-block;
+  width: 60%;
+  margin-right: 10px;
+}
+#codeP {
+  display: inline-block;
+  width: 228.9px;
+}
+#adress {
+  margin-top: 20px;
+}
+/*  */
+.montant {
+  float: right;
+  margin-bottom: 70px;
+  position: relative;
+  left: 70px;
+  bottom: 10px;
+}
+.total-achat {
+  margin-top: 40px;
+  border-top: 1px solid rgb(211, 210, 224);
+}
+
+.label-select {
+  color: #707070;
+  position: absolute;
+  margin-left: 14px;
+  margin-top: 5px;
+}
+#mois-exp {
+  margin-bottom: 20px;
+}
+#annee-exp {
+  margin-bottom: 20px;
+}
+.fa-credit-card {
+  position: absolute;
+  bottom: -470px;
+  left: 195px;
+  color: #707070;
+}
+.descrip-achat {
+  position: relative;
+  right: 25px;
+}
+.nombre-achat {
+  position: relative;
+  right: 40px;
+  bottom: 8px;
+}
+.paiement-btn {
+  background-color: #c46060;
+  border: 2px solid #c46060;
+  color: #d3dedc;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+  margin-top: 10px;
+}
+
+.paiement-btn:hover {
+  background-color: transparent;
+  border-color: #c46060;
+  color: #c46060;
+}
+.pay-btn {
+  text-align: center;
+}
+.info-session {
+  margin-bottom: 20px;
+}
+.obligatoire-adresse {
+  top: 17px;
+}
+.info-session h3 {
+}
+#erreur {
+  margin-bottom: 10px;
+  color: red;
+}
+#code-securite {
+  padding-left: 45px;
+}

@@ -1,0 +1,166 @@
+/* css appliqué sur select*/
+
+select {
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  padding: 10px;
+
+  width: 18%;
+  float: left;
+}
+
+.product-btn {
+  text-align: center;
+  position: relative;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.3s ease-in-out;
+}
+
+#product-BTN {
+  transition: all 0.3s ease;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  /* color: #454545;*/
+  color: #585858;
+  background-color: transparent;
+
+  margin-right: 10px;
+}
+
+#product-BTN:hover {
+  color: #c46060;
+}
+.img-general {
+  position: relative;
+  width: 92%;
+  height: 220px;
+  border-radius: 2%;
+  object-fit: cover;
+}
+
+.pub h1 {
+  color: #576f72;
+}
+
+.pub {
+  position: absolute;
+  color: black;
+  bottom: 70px;
+
+  left: 40px;
+}
+
+.article a {
+  color: #c46060;
+  text-decoration: none;
+}
+
+.article a:visited {
+  text-decoration: none;
+}
+
+.article a:hover {
+  color: #567189;
+}
+#article-conteneur {
+  display: grid;
+  grid-template-columns: 200px 200px 200px 200px;
+}
+
+.centre {
+  margin-top: 1px;
+  float: top;
+  position: relative;
+}
+
+/* taille des images */
+
+.image {
+  width: 200px;
+  height: 200px;
+  border-radius: 100%; /*la bordure d'images de chocolats*/
+  object-fit: cover;
+}
+
+#article-conteneur {
+  padding: 20px;
+  clear: right;
+  text-align: center;
+  gap: 20px;
+}
+
+.tout {
+  width: 35%;
+  height: 100%;
+  width: 170px;
+  position: relative;
+  top: 0px;
+  padding: 10px;
+  text-align: left;
+  margin-left: 40px;
+}
+
+/* hover des images */
+
+.article:hover {
+  box-shadow: 20px 20px 20px #884444;
+  width: 200px;
+  height: 200px;
+  border-radius: 100%;
+  transform: scale(1.2);
+  transition: all 0.3s ease;
+}
+
+/*container*/
+
+#container {
+  display: grid;
+  grid-template-columns: 26% 74%;
+}
+
+select {
+  height: 40px;
+  width: 200px;
+}
+
+.notif {
+  background-color: #fff;
+  position: absolute;
+  width: 660px;
+  height: 320px;
+  display: none;
+  left: 500px;
+  z-index: 9999;
+  opacity: 1;
+  top: 670px;
+  padding: 20px;
+}
+.description-article {
+  display: none;
+}
+
+/* pour rendre la page un peu flou  */
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  opacity: 0.7;
+  height: 1730px;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* La couleur de fond avec une opacité de 0,5 */
+  z-index: 999; /* La priorité de la couche, doit être supérieure à celle des autres éléments */
+}

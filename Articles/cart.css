@@ -1,0 +1,217 @@
+
+
+.facture{
+  width:270px;
+  margin-left: 1000px;
+  margin-bottom: 70px;
+  
+}
+
+.product {
+    display : grid ;
+    margin-left: 100px;
+    width: 60%;
+    grid-template-columns: 40% 30% 30%  ;
+    gap: 20px;
+    margin-bottom: 30px;
+    
+    border-top: 1px solid #dddddd;
+}
+
+.descrip-img {
+    display: grid;
+    grid-template-columns: 60% 40% ;
+    
+}
+
+.descrip-img img {
+    width : 90% ;
+    height: 70% ;
+    margin-top: 30px;
+    object-fit: cover;
+    
+    border-radius: 5px;
+    
+    
+    
+    
+    
+    
+    
+    
+    filter: contrast(180%);
+
+}
+.descrip-article  {
+    padding-top: 40px;
+}
+.plus-moins  , .total-article {
+    padding-top: 60px;
+    
+}
+
+table {
+    width:  50%;
+    margin-left: 40px;
+
+    
+    
+}
+table,  td {
+    border: 1px solid #dddddd ;
+    border-collapse: collapse;
+    text-align: center;
+    padding : 10px ;
+  }
+.minus-btn {
+    
+    cursor: pointer;
+    padding: 0px;
+    position: relative;
+    
+    background-color: transparent;
+    border: none;
+    color: #333333;
+    font-size: 15px;
+  }
+
+  .plus-btn {
+   
+    padding: 0px;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+  
+    color: #333333;
+    font-size: 15px;
+  }
+
+
+  .facture {
+    height: 140px;
+    background-color: rgba(216, 217, 207, 0.6);
+    
+    
+    margin-right: 80px;
+    padding: 5px;
+  }
+  .facture .span1 {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 90px;
+    margin-left: 10px;
+  }
+  .facture .span2 {
+    font-weight: bold;
+  }
+  .paiement-btn {
+    background-color: #c46060;
+    border: 2px solid #c46060;
+    color: #d3dedc;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
+    margin-top: 10px;
+    margin-left: 35px;
+  }
+  
+  .paiement-btn:hover {
+    background-color: transparent;
+    border-color: #c46060;
+    color: #c46060;
+  }
+  .total-article a {
+    color: #333333;
+  }
+  .total-article a:hover {
+    color: #c46060;
+    transition: all 0.3s ease;
+  }
+  
+  .paiement-btn a {
+    text-decoration: none;
+    color: #d3dedc;
+  }
+  .paiement-btn a:hover {
+    text-decoration: none;
+    color: #c46060;
+  }
+
+  .paiement-btn {
+    background-color: #c46060;
+    border: 2px solid #c46060;
+    color: #d3dedc;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
+    margin-top: 10px;
+    margin-left: 35px;
+  }
+  
+  .paiement-btn:hover {
+    background-color: transparent;
+    border-color: #c46060;
+    color: #c46060;
+  }
+  .total-article a {
+    color: #333333;
+  }
+  .total-article a:hover {
+    color: #c46060;
+    transition: all 0.3s ease;
+  }
+  
+  .paiement-btn a {
+    text-decoration: none;
+    color: #d3dedc;
+  }
+  .paiement-btn a:hover {
+    text-decoration: none;
+    color: #c46060;
+  }
+  
+  .vider-continuer {
+    padding: 40px;
+  }
+  .btn-vider-retour {
+    background-color: #c46060;
+    border: 2px solid #c46060;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 35px;
+  }
+  .btn-vider-retour a {
+    text-decoration: none;
+    color: #d3dedc;
+  }
+  .vider-continuer hr {
+    width: 880px;
+    margin-left: 35px;
+    margin-bottom: 20px;
+    border: 1px solid #dddddd;
+  }
+  
+
+
+
+
+
+
+

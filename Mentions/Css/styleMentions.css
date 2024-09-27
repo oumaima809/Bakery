@@ -1,0 +1,26 @@
+h1 {
+  text-align: center;
+  color: rgb(187, 116, 128);
+}
+
+h3 {
+  text-align: center;
+}
+.mentions {
+  text-align: center;
+}
+
+.puce {
+  list-style-type: none;
+}
+.puce li {
+  background-image: url("../images/puce.png");
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left: 20px;
+  color: gray;
+}
+
+.last-list {
+  margin-left: 640px;
+}

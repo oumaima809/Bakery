@@ -1,0 +1,109 @@
+.conteneur-princip {
+  display: grid;
+  grid-template-columns: 100% 20%;
+  padding: 80px;
+}
+h2 {
+  margin-bottom: 40px;
+  text-align: center;
+}
+#commentaire-form input,
+textarea {
+  display: block;
+  width: 100%;
+  font-size: 15px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+}
+.conteneur-form {
+  margin-left: 70px;
+}
+
+.degre-satisfaction {
+  display: grid;
+  grid-template-columns: 152px 15px 100px 15px 100px 15px 100px;
+  grid-gap: 10px;
+  margin-left: 10px;
+}
+.titre-satisfaction {
+  margin-right: 20px;
+}
+input[type="radio"] {
+  margin-top: 4px;
+}
+#commentaire-form input:hover {
+  box-shadow: 0px 10px 30px #abc4aa;
+  transition: all 0.3s ease;
+}
+#commentaire-form textarea:hover {
+  box-shadow: 0px 10px 30px #abc4aa;
+  transition: all 0.3s ease;
+}
+
+.commentaire-descrip {
+  margin-top: 100px;
+  background-color: #abc4aa;
+  width: 450px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  height: 300px;
+  margin-left: 80px;
+}
+.commentaire-descrip p {
+  padding: 15px;
+}
+.child-div {
+  position: absolute;
+  background-color: rgba(242, 233, 228, 0.5);
+  width: 350px;
+  text-align: center;
+  padding: 20px;
+  left: 970px;
+  top: 350px;
+}
+.envoyer-btn {
+  background-color: #61876e;
+  border: 2px solid #61876e;
+  color: white;
+  padding: 15px 32px;
+
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: border-color 0.3s, background-color 0.3s;
+  margin-top: 20px;
+  margin-left: 260px;
+}
+.envoyer-btn:hover {
+  background-color: transparent;
+  border-color: #61876e;
+  color: #61876e;
+}
+
+.obligatoire {
+  color: red;
+  font-size: 25px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+}
+.fa-paper-plane {
+  font-size: 17px;
+
+  margin-right: 7px;
+}
+#erreur-commentaire {
+  color: red;
+  margin-left: 10px;
+}
+label {
+  margin-left: 10px;
+  font-weight: bold;
+}
+.fa-face-smile {
+  margin-left: 10px;
+}

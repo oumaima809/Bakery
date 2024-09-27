@@ -1,0 +1,419 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#container {
+  overflow-x: hidden;
+
+  box-sizing: border-box;
+}
+
+header {
+  min-height: 150px;
+}
+
+#main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+
+  gap: 10px;
+}
+.rows {
+  min-height: 300px;
+  display: grid;
+  grid-template-rows: 85% 15%;
+}
+#content {
+  margin-left: 40px;
+}
+#content4 {
+  position: relative;
+  margin: 100px 100px;
+}
+#content4 h3 {
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+td .button-heart {
+  color: white;
+}
+
+.product_container {
+  padding: 0 5vw;
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+.product_container ::-webkit-scrollbar {
+  display: none;
+}
+.product_card {
+  flex: 0 0 auto;
+  width: 300px;
+  height: 400px;
+  margin-right: 40px;
+  overflow-y: hidden;
+}
+.product-size {
+  width: 190px;
+  height: 130px;
+}
+.product-size-mac {
+  width: 210px;
+  height: 205px;
+  object-fit: cover;
+  position: relative;
+}
+.product_image-mac {
+  position: relative;
+  overflow: hidden;
+  margin: 0 50px;
+  box-shadow: 0 0 20px 2px rgba(177, 101, 154, 0.1);
+  transition: 1s;
+  width: 70%;
+  height: 60%;
+
+  background-color: white;
+  filter: contrast(145%);
+}
+#salé {
+  width: auto;
+  height: 200px;
+}
+.product_image {
+  position: relative;
+
+  overflow: hidden;
+  margin: 0 50px;
+  box-shadow: 0 0 20px 2px rgba(177, 101, 154, 0.1);
+  transition: 1s;
+  width: 70%;
+  height: 50%;
+
+  padding-top: 10px;
+  border-radius: 100%;
+
+  filter: contrast(145%);
+}
+
+.product_thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product_info {
+  width: 100%;
+  height: 20%;
+  margin-top: 10px;
+  text-align: center;
+}
+.product_name {
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  overflow: hidden;
+  opacity: 0.5;
+  text-transform: capitalize;
+  margin: 5px 0;
+}
+.price {
+  font-weight: 900;
+  font-size: 20px;
+}
+#btn1 {
+  width: 30px;
+  height: 30px;
+}
+#btn2 {
+  width: 30px;
+  height: 30px;
+}
+.pre-btn,
+.next-btn {
+  border: none;
+  width: 10 vw;
+  height: 45%;
+  position: absolute;
+  top: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgb(243, 242, 250) 100%
+  );
+  cursor: pointer;
+  z-index: 9;
+}
+.pre-btn {
+  left: 1;
+  transform: rotate(180deg);
+}
+.next-btn {
+  right: 0;
+}
+.pre-btn img,
+.next-btn img {
+  opacity: 0.2;
+}
+.pre-btn:hover img,
+.next-btn:hover img {
+  opacity: 1;
+}
+
+.content2 {
+  text-align: left;
+}
+.content3 {
+  display: grid;
+  grid-template-rows: repeat(3, 270px);
+  gap: 20px;
+  margin-left: 50px;
+}
+.con3 {
+  background-color: #f2e9e4;
+  width: 70%;
+  margin: 20px 50px;
+  text-align: center;
+  color: #567189;
+}
+.con3 h3 {
+  margin-top: 20px;
+}
+#magnifying_area {
+  width: 90%;
+  height: 300px;
+  overflow: hidden;
+
+  position: relative;
+}
+#magnifying_img {
+  max-width: 100%;
+  min-width: 100%;
+  height: auto;
+  filter: contrast(180%);
+  position: absolute;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  pointer-events: none;
+}
+
+footer {
+  min-height: 60px;
+}
+.bold {
+  font-weight: 520;
+  font-size: 1.3em;
+  margin-right: 15px;
+}
+#stock {
+  color: green;
+  font-size: 1.2em;
+}
+#prix {
+  font-weight: bolder;
+  font-size: larger;
+}
+#def {
+  font-size: 1em;
+}
+.infoss {
+  color: grey;
+  font-style: italic;
+}
+.icon {
+  width: 30px;
+  height: auto;
+  margin-right: 15px;
+}
+.content2 h1 {
+  color: #191825;
+}
+#paiement {
+  width: 100%;
+  height: auto;
+  margin-top: 0;
+  margin-left: 90px;
+}
+#sécurisé {
+  margin-top: 25px;
+  margin-left: 160px;
+}
+.bolder {
+  font-weight: bolder;
+  margin-right: 15px;
+}
+#content4 h3 {
+  color: #c46060;
+  margin-bottom: 50px;
+}
+select {
+  width: 100px;
+  padding: 7px 5px;
+  border-color: #dddddd;
+  border-radius: 10px;
+  background-color: #f3f2fa;
+  text-align: center;
+  position: relative;
+}
+#inline {
+  display: inline-flex;
+}
+#table1 {
+  width: 200px;
+  height: auto;
+
+  font-size: larger;
+  font-weight: bold;
+  margin-left: 20px;
+}
+#table1,
+td {
+  border: 1px solid #dddddd;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 5px;
+}
+.minus-btn {
+  cursor: pointer;
+  padding: 0px;
+  position: relative;
+
+  background-color: transparent;
+  border: none;
+  color: #333333;
+  font-size: 15px;
+}
+
+.plus-btn {
+  padding: 0px;
+  position: relative;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+
+  color: #333333;
+  font-size: 15px;
+}
+
+.size {
+  width: 80px;
+}
+#table2,
+.cellule2 {
+  border: 1px solid white;
+  border-collapse: collapse;
+  text-align: center;
+  height: 40px;
+  color: white;
+}
+.cellule2 {
+  background-color: #be6db7;
+}
+#img {
+  width: 20px;
+  height: 20px;
+}
+#cel1 {
+  width: 50px;
+}
+#cel2 {
+  width: 200px;
+}
+#cel3 {
+  width: 160px;
+}
+
+.add-cart {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+.add-cart:hover {
+  cursor: pointer;
+}
+.product-btn {
+  text-align: center;
+  position: relative;
+  bottom: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.second-span {
+  margin-right: 200px;
+}
+#product-BTN {
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  font-size: 16px;
+  border: none;
+  position: relative;
+  color: #585858;
+  background-color: transparent;
+  padding: 4px;
+
+  margin-right: 10px;
+}
+#product-BTN:hover {
+  color: #c46060;
+}
+
+.image-container:hover .buttons {
+  bottom: 20px;
+  opacity: 1;
+}
+
+.product-size1 {
+  width: 150px;
+  height: auto;
+  padding-left: 50px;
+}
+.product-size2 {
+  width: 170px;
+  height: auto;
+  padding-left: 30px;
+}
+#overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: none;
+  opacity: 0.7;
+  height: 2230px;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* La couleur de fond avec une opacité de 0,5 */
+  z-index: 999; /* La priorité de la couche, doit être supérieure à celle des autres éléments */
+}
+
+.notif {
+  background-color: #fff;
+  position: absolute;
+  width: 660px;
+  height: 320px;
+  left: 450px;
+  display: none;
+  z-index: 9999;
+  opacity: 1;
+  top: 1220px;
+  padding: 20px;
+}
+.cellule2 a {
+  color: #fff;
+  text-decoration: none;
+}
