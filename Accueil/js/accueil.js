@@ -12,7 +12,7 @@ let link = document.querySelector(".first-link");
 // Index de l'image courante
 
 document.getElementById("d").addEventListener("click", function () {
-  if (i < sourceImg.length - 1) {
+   if (i==sourceImg.length-1) i=-1
     caroussel.style.transition = "all 0.7s ease";
     carouselImg.style.opacity = 0;
     setTimeout(function () {
@@ -35,7 +35,8 @@ document.getElementById("d").addEventListener("click", function () {
 
       expression.style.height = "100px";
     }, 700);
-  }
+  
+
 });
 
 document.getElementById("g").addEventListener("click", function () {

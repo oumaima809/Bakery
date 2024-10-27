@@ -23,17 +23,17 @@
             <p>Bakery World</p>
           </div>
           <ul>
-            <li><a href="../../Accueil/Accueil.html">Accueil</a></li>
+            <li><a href="../Accueil/Accueil.php">Accueil</a></li>
             <li>
               <a href="" class="service">Catégories</a>
               <ul>
-                  <li><a href="../Categorie/categorieDetail.php?nom=macaran">Macarons</a></li>
+                  <li><a href="../Categorie/categorieDetail.php?nom=macaron">Macarons</a></li>
                   <li><a href="../Categorie/categorieDetail.php?nom=cupcake">Cupcakes</a></li>
                   <li><a href="../Categorie/categorieDetail.php?nom=croissant">Croissants</a></li>
                   <li><a href="../Categorie/categorieDetail.php?nom=chocolat">Chocolats</a></li>
               </ul>
             </li>
-            <li><a href="../A propos/propos.html">A propos</a></li>
+            <li><a href="../A propos/propos.php">A propos</a></li>
 
             <li>
               <a href="../Favoris/favoris.html"

@@ -1,0 +1,95 @@
+.div-general-info {
+    padding: 50px;
+    margin-top: 45px;
+    margin-left: 300px;
+  
+    grid-template-columns: repeat(3, 300px);
+  
+    display: grid;
+  }
+  
+  .email a:hover {
+    color: #c46060;
+  }
+  .email a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  .descrip-info {
+    float: right;
+    margin-right: 80px;
+    text-align: left;
+  }
+  .info-icon {
+    font-size: 20px;
+    margin-top: 5px;
+  }
+  
+  .div-info {
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    padding: 20px;
+  }
+  .info {
+    text-align: left;
+    position: relative;
+    left: 410px;
+  }
+  .info hr {
+    width: 40px;
+  }
+  .reseaux-soc {
+    position: relative;
+    left: 180px;
+  }
+  .info a {
+    color: black;
+    text-decoration: none;
+  }
+  .info a:hover {
+    color: #c46060;
+    text-decoration: none;
+  }
+  
+  .info ul {
+    /* list-style-type: none; */
+  }
+  
+  .div-info .info p {
+    width: 350px;
+    font-size: 14px;
+  }
+  hr {
+    margin: 10px 10px;
+  }
+  .sm {
+    color: black;
+  }
+  .faceb:hover {
+    color: #3b5998;
+  }
+  .pin:hover {
+    color: #bd081c;
+  }
+  .twi:hover {
+    color: #1da1f2;
+  }
+  .insta:hover {
+    color: #e4405f;
+  }
+  .copyrights {
+    background-color: #c8b6a6;
+  }
+  footer {
+    margin-top: 50px;
+    background-image: url("../images/bg1.jpg");
+    text-align: center;
+  }
+  
+  .separateur-hr {
+    width: 40%;
+    position: relative;
+    left: 460px;
+  }
+  

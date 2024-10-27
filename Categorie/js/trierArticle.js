@@ -1,10 +1,9 @@
 const articles = document.getElementById("article-conteneur");
-
-// Récupérer le menu déroulant
 const select = document.getElementById("trie-prix");
 
 // Fonction pour trier les articles
 function trierArticles() {
+  console.log("hello")
   const option = select.value;
   const sortedArticles = Array.from(articles.children).sort((a, b) => {
     const prixA = parseInt(a.querySelector(".price").textContent);

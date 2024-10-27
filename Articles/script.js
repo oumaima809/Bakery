@@ -59,7 +59,7 @@ plusBtn.addEventListener("click", function () {
   let quantity = parseInt(quantityElement.innerHTML);
   quantity += 1;
   quantityElement.innerHTML = quantity.toString();
-  alert(quantity);
+ 
 });
 
 minusBtn.addEventListener("click", function () {

@@ -4,7 +4,9 @@
     <meta charset="UTF-8" />
     <title>Bakery Chocolat</title>
 
-    <link rel="stylesheet" href="../Accueil/Css/styleAccueil.css" />
+    <link rel="stylesheet" href="../Navbar/navbar.css" />
+    <link rel="stylesheet" href="../Footer/footer.css" />
+
     <link rel="stylesheet" type="text/css" href="Css/styleCategorieArticle.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -20,51 +22,15 @@
   </head>
 
   <body>
-    <div id="overlay"></div>
-    <div id="compte" class="div-compte">
-      <span class="first-span">Besoin d'aide ? </span>
-      <span class="second-span"> Appeler 72313478</span>
-      <a class="inscription" href="../Inscription/inscription.html"
-        ><span>Inscription</span></a
-      >
-      <a class="connexion" href="../Connexion/connexion.html"
-        ><span>Connexion</span></a
-      >
-    </div>
-    <nav>
-      <div class="logo">
-        <p>Bakery World</p>
-      </div>
-      <ul>
-        <li><a href="../Accueil/Accueil.php">Accueil </a></li>
-        <li>
-          <a href="" class="service">Catégories</a>
-          <ul>
-            <li><a href="../Categorie/macarons.php">Macarons</a></li>
-            <li><a href="../Categorie/cupcakes.php">Cupcakes</a></li>
-            <li><a href="../Categorie/croissant.php">Croissants</a></li>
-            <li><a href="../Categorie/chocolat.php">Chocolats</a></li>
-          </ul>
-        </li>
-        <li><a href="../A propos/propos.html">A propos</a></li>
-        <li>
-          <a href="../Favoris/favoris.html"><i class="fas fa-heart"></i></a>
-        </li>
-        <li class="cart">
-          <a href="../Articles/cart.html"
-            ><i class="fas fa-shopping-cart"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <br />
-    <!-- partie a gauche de filtre jusqua prix -->
+  <?php include '../Navbar/navbar.php'; ?> <!-- Include the navbar -->
 
+    <!-- partie a gauche de filtre jusqua prix -->
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
 
     <?php
 $host = 'localhost';
@@ -141,6 +107,7 @@ ini_set('display_errors', 0);
 if (isset($_GET['nom'])) {
     // Get the value of 'nom' from the URL
     $nomCat = $_GET['nom'];
+   
 
     if ($nomCat == "chocolat") {
         $idCat=2;
@@ -205,10 +172,10 @@ if (isset($_GET['nom'])) {
               pour des souvenirs inoubliables !
             </p>
           </div>
-        </div>
+        </div> 
         <hr />';
     }
-    else if($nomCat=="macaran"){
+    else if($nomCat=="macaron"){
         $idCat=3;
 
         echo '<!-- Image backround-->
@@ -230,23 +197,25 @@ if (isset($_GET['nom'])) {
         </div>
         <hr />';
     }
-} else {
-    echo "Parameter 'nom' is not set in the URL.";
-}
+} 
 ?>
 
-      
+
 
         <!--le tri  et avec border aussi-->
         <div class="tr">
           <p>Triez par :</p>
           <br />
-          <form method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+          <form method="GET" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+               
+                   
+
                 <select name="Trie" id="trie-prix" onchange="this.form.submit()">
                     <option value="aucun">aucun</option>
-                    <option value="low-high">Prix: faible à élevé</option>
-                    <option value="high-low">Prix: élevé à faible</option>
+                    <option value="low-high" <?php if (isset($_GET['Trie']) && $_GET['Trie'] == 'low-high') echo 'selected'; ?>>Prix: faible à élevé</option>
+                    <option value="high-low" <?php if (isset($_GET['Trie']) && $_GET['Trie'] == 'high-low') echo 'selected'; ?>>Prix: élevé à faible</option>
                 </select>
+                <input type="hidden" name="nom" value="<?php echo $nomCat; ?>"/>  
           </form>
 
 
@@ -280,33 +249,13 @@ $_SESSION['nom_utilisateur'] = 'John';
 
 try {
 
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
-    // ...
-
-    // Exécution d'une requête pour récupérer les articles
    
     $tri = $_GET['Trie'];
     $currentOption = $tri;
     // Modifiez votre requête SQL en fonction de la valeur de tri
-    if ($tri === 'Prix: faible à élevé') {
+    if ($tri === 'low-high') {
         $query = "SELECT * FROM article WHERE catArt = $idCat ORDER BY prixArt ASC";
-    } elseif ($tri === 'Prix: élevé à faible') {
+    } elseif ($tri === 'high-low') {
         $query = "SELECT * FROM article WHERE catArt = $idCat ORDER BY prixArt DESC";
     } else {
         $query = "SELECT * FROM article WHERE catArt = $idCat";
@@ -362,7 +311,7 @@ try {
 
 
 } catch (PDOException $e) {
-    // ...
+   
 }
 ?>
 
@@ -375,85 +324,8 @@ try {
     <br />
     <!-- Partie footer -->
 
-    <footer>
-      <div class="div-general-info">
-        <div class="position">
-          <i class="info-icon fas fa-map-marker-alt"></i>
-          <div class="descrip-info">
-            <h3>Nos Adresses</h3>
-            <p>Centre Urbain Nord</p>
-          </div>
-        </div>
-        <div class="contact">
-          <i class="info-icon fa-solid fa-phone"></i>
-          <div class="descrip-info">
-            <h3>Contacter nous</h3>
-            <p>+216 72313478</p>
-          </div>
-        </div>
-        <div class="email">
-          <i class="info-icon fa-solid fa-envelope"></i>
-          <div class="descrip-info">
-            <h3>Email</h3>
-            <a href="mailto:Bakery-world@gmail.com">Bakery-world@gmail.com</a>
-          </div>
-        </div>
-      </div>
-      <hr class="separateur-hr" />
-      <div class="div-info">
-        <div class="info">
-          <h4>Bakery World</h4>
-          <hr />
-          <p>
-            Backery World est une pâtisserie passionnée par l'art de la
-            pâtisserie. Nous sommes fiers de créer des produits de qualité
-            supérieure, avec les meilleurs ingrédients pour garantir une
-            expérience de dégustation inoubliable. Chez Backery World, nous
-            proposons une large sélection de pâtisseries allant des classiques
-            traditionnels aux créations les plus innovantes. Nous sommes
-            déterminés à satisfaire les papilles de nos clients en offrant un
-            large choix de produits frais et savoureux
-          </p>
-        </div>
-        <div class="info liens">
-          <h4>Liens utiles</h4>
-          <hr />
-          <ul>
-            <li>
-              <a href="../Mentions/mentions.html">Mentions légales </a>
-            </li>
-
-            <li><a href="../A propos/propos.html">A propos de nous</a></li>
-            <li>
-              <a href="../Commentaire/commentaire.html"
-                >Exprimer votre Feedback</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <div class="reseaux-soc info">
-          <h4>Suivez nous</h4>
-          <hr />
-          <a
-            href="https://www.facebook.com/groups/292204118759292/"
-            target="_blank"
-            ><i class="fa-brands fa-facebook sm faceb"></i
-          ></a>
-          <a href="https://www.instagram.com/world.of.bakery/" target="_blank"
-            ><i class="fab fa-instagram sm insta"></i
-          ></a>
-          <a href=""><i class="fab fa-twitter sm twi"></i></a>
-          <a href=""><i class="fab fa-pinterest sm pin"></i></a>
-        </div>
-      </div>
-
-      <div class="copyrights">
-        <p>Copyright © 2023 Backery World</p>
-      </div>
-    </footer>
-
-    <script src="js/trierArticle.js"></script>
+    <?php include '../Footer/footer.php'; ?> 
+    
     <script src="js/heart.js"></script>
     <script src="js/aperçu.js"></script>
   </body>

@@ -15,6 +15,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="chocolat.css" />
+        <link rel="stylesheet" href="../Navbar/navbar.css" />
+        <link rel="stylesheet" href="../Footer/footer.css" />
+
         
         <link
           rel="stylesheet"
@@ -181,7 +184,8 @@
                       <i class="fas fa-plus"></i>
                     </button>
                   </td>
-                  <p class="cell2" id="quantity">1</p>
+                  <td><p class="cell2" id="quantity">1</p></td>
+                  
                   <td class="cell3">
                     <button class="minus-btn" id="minus">
                       <i class="fas fa-minus"></i>
@@ -208,13 +212,13 @@
 
             <input type="hidden" name="nom" value="<?php echo $_GET['nom']; ?>">
 
-            <input type="text" name="content" id="contente" value="0">
+            <input type="hidden" name="content" id="contente" value="0">
 
-                  <input class="add-cart" type="submit" value="AJOUTER AU PANIER">
+                  <input class="add-cart" type="submit" value="AJOUTER AU PANIER"></form>
                   </td>
                   <td class="cellule2" id="cel3">
                     <a href="../../Paiement/paiement.html">ACHAT DIRECT</a>
-                  </td></form>
+                  </td>
                 </tr>
               </table>
             </span>
@@ -225,7 +229,7 @@
 
 
             <h5 id="sécurisé">-Paiement Sécurisé-</h5>
-            <img id="paiement" src="paiement.png" />
+            <img id="paiement" src="images/paiement.png" />
           </div>
 
           <div class="content3">
@@ -257,204 +261,75 @@
           </div>
         </div>
         <div class="notif" id="notification"></div>
+
         <div id="content4">
           <h3 class="bolder">Vous pourriez également apprécier</h3>
 
-          <button class="pre-btn"><img id="btn1" src="../next.jpg" /></button>
-          <button class="next-btn"><img id="btn2" src="../next.jpg" /></button>
+          <button class="pre-btn"><img id="btn1" src="images/next.jpg" /></button>
+          <button class="next-btn"><img id="btn2" src="images/next.jpg" /></button>
 
           <div class="product_container">
-            <div class="product_card">
-              <div
-                class="product_image-mac"
-                onmouseover="showButtons(0)"
-                onmouseout="hideButtons(0)"
-              >
-                <a href="framboise.html"
-                  ><img
-                    src="../images/chocociframboise macaron.png"
-                    class="product-size-mac"
-                    class="product_thumb"
-                /></a>
 
-                <div class="product-btn">
-                  <button id="product-BTN" class="cart">
-                    <i class="fas fa-heart button-heart"></i>
-                  </button>
-                  <button id="product-BTN" class="add-cart">
-                    <i class="fas fa-shopping-cart"></i>
-                  </button>
-                  <button id="product-BTN" onclick="changeIcon(0)">
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
+
+          <?php
+            
+            $category = $article['catArt'];
+
+            try {
+
+              $query = "SELECT * FROM article WHERE catArt = :cat AND idArt != :nom";
+              $statement = $pdo->prepare($query); // Prepare the statement
+              $statement->bindParam(':cat', $category); // Bind the category parameter
+              $statement->bindParam(':nom', $articleNom); // Bind the article name parameter
+              $statement->execute(); // Execute the statement
+              $articles = $statement->fetchAll(PDO::FETCH_ASSOC); // Fetch all articles matching the criteria
+                
+
+                // Parcourir les articles et les afficher
+                foreach ($articles as $article) {
+                    echo 
+                    '
+                      <div class="product_card">
+                            <div
+                              class="product_image-mac"
+                              onmouseover="showButtons(0)"
+                              onmouseout="hideButtons(0)"
+                            >
+                              <a href="../Articles/articleDetail.php?nom='.$article['idArt'].'"
+                                ><img
+                                  src="../Categorie/'.$article['imgArt'].'"
+                                  class="product-size-mac"
+                                  class="product_thumb"
+                              /></a>
+
+                              <div class="product-btn">
+                                <button id="product-BTN" class="cart">
+                                  <i class="fas fa-heart button-heart"></i>
+                                </button>
+                                <button id="product-BTN" class="add-cart">
+                                  <i class="fas fa-shopping-cart"></i>
+                                </button>
+                                <button id="product-BTN" onclick="changeIcon(0)">
+                                  <i class="fa-solid fa-eye"></i>
+                                </button>
+                              </div>
+                            </div>
+                            <div class="product_info">
+                              <h4 class="product_name">'.$article['nomArt'].'</h4>
+                              <h4 class="product_name">'.$article['quantArt'].'</h4>
+                              <div class="price">'.$article['prixArt'].' DT</div>
+                            </div>
+                       </div>';
+                }
+              } catch (Exception $e) {
+                echo 'Error: ' . $e->getMessage();
+              }
+
+          ?>
+
+
+
                 </div>
-              </div>
-              <div class="product_info">
-                <h4 class="product_name">Macaron du chocociframboise</h4>
-                <h4 class="product_name">12 Pièces</h4>
-                <div class="price">22.000 DT</div>
-              </div>
-            </div>
-
-            <div class="product_card">
-              <div
-                class="product_image-mac"
-                onmouseover="showButtons(1)"
-                onmouseout="hideButtons(1)"
-              >
-                <a href="fraisemac.html"
-                  ><img
-                    src="../images/fraisemac.png"
-                    class="product-size-mac"
-                    class="product_thumb"
-                /></a>
-
-                <div class="product-btn">
-                  <button id="product-BTN" class="cart">
-                    <i class="fas fa-heart button-heart"></i>
-                  </button>
-                  <button id="product-BTN" class="add-cart">
-                    <i class="fas fa-shopping-cart"></i>
-                  </button>
-                  <button id="product-BTN" onclick="changeIcon(1)">
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="product_info">
-                <h4 class="product_name">Macaron aux fraises</h4>
-                <h4 class="product_name">12 Pièces</h4>
-                <div class="price">18.000 DT</div>
-              </div>
-            </div>
-
-            <div class="product_card">
-              <div
-                class="product_image-mac"
-                onmouseover="showButtons(2)"
-                onmouseout="hideButtons(2)"
-              >
-                <a href="crème.html">
-                  <img
-                    src="../images/macaron crème.png"
-                    class="product-size-mac"
-                    class="product_thumb"
-                /></a>
-
-                <div class="product-btn">
-                  <button id="product-BTN" class="cart">
-                    <i class="fas fa-heart button-heart"></i>
-                  </button>
-                  <button id="product-BTN" class="add-cart">
-                    <i class="fas fa-shopping-cart"></i>
-                  </button>
-                  <button id="product-BTN" onclick="changeIcon(2)">
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="product_info">
-                <h4 class="product_name">Macaron à la crème du lait</h4>
-                <h4 class="product_name">12 Pièces</h4>
-                <div class="price">18.000 DT</div>
-              </div>
-            </div>
-            <div class="product_card">
-              <div
-                class="product_image-mac"
-                onmouseover="showButtons(3)"
-                onmouseout="hideButtons(3)"
-              >
-                <a href="mogador.html"
-                  ><img
-                    src="../images/macaron mogador.png"
-                    class="product-size-mac"
-                    class="product_thumb"
-                /></a>
-
-                <div class="product-btn">
-                  <button id="product-BTN" class="cart">
-                    <i class="fas fa-heart button-heart"></i>
-                  </button>
-                  <button id="product-BTN" class="add-cart">
-                    <i class="fas fa-shopping-cart"></i>
-                  </button>
-                  <button id="product-BTN" onclick="changeIcon(3)">
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="product_info">
-                <h4 class="product_name">Macaron du mogador</h4>
-                <h4 class="product_name">12 Pièces</h4>
-                <div class="price">18.000 DT</div>
-              </div>
-            </div>
-
-            <div class="product_card">
-              <div
-                class="product_image-mac"
-                onmouseover="showButtons(4)"
-                onmouseout="hideButtons(4)"
-              >
-                <a href="jardin.html"
-                  ><img
-                    src="../images/macrons jardin enchanté.png"
-                    class="product-size-mac"
-                    class="product_thumb"
-                /></a>
-
-                <div class="product-btn">
-                  <button id="product-BTN" class="cart">
-                    <i class="fas fa-heart button-heart"></i>
-                  </button>
-                  <button id="product-BTN" class="add-cart">
-                    <i class="fas fa-shopping-cart"></i>
-                  </button>
-                  <button id="product-BTN" onclick="changeIcon(4)">
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="product_info">
-                <h4 class="product_name">Macaron du jardin enchanté</h4>
-                <h4 class="product_name">12 Pièces</h4>
-                <div class="price">23.000 DT</div>
-              </div>
-            </div>
-
-            <div class="product_card">
-              <div
-                class="product_image-mac"
-                onmouseover="showButtons(5)"
-                onmouseout="hideButtons(5)"
-              >
-                <a href="pistache.html"
-                  ><img
-                    src="../images/pistache.png"
-                    class="product-size-mac"
-                    class="product_thumb"
-                /></a>
-
-                <div class="product-btn">
-                  <button id="product-BTN" class="cart">
-                    <i class="fas fa-heart button-heart"></i>
-                  </button>
-                  <button id="product-BTN" class="add-cart">
-                    <i class="fas fa-shopping-cart"></i>
-                  </button>
-                  <button id="product-BTN" onclick="changeIcon(5)">
-                    <i class="fa-solid fa-eye"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="product_info">
-                <h4 class="product_name">macaron au saveur de pistache</h4>
-                <h4 class="product_name">12 Pièces</h4>
-                <div class="price">22.000 DT</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -468,46 +343,14 @@
   
 
    
-    <script src="chocolatmac.js"></script>
-    <script src="aperç.js"></script>
+    <script src="script.js"></script>
+    <!-- <script src="aperç.js"></script> -->
 
     <script
       src="https://kit.fontawesome.com/759fe707e1.js"
       crossorigin="anonymous"
     ></script>
 
-    <script>
-    
-
-
-
-    const plusBtn = document.getElementById("plus");
-const minusBtn = document.getElementById("minus");
-var quantityElement = document.getElementById("contente");
-
-
-plusBtn.addEventListener("click", function () {
-  let quantity = parseInt(quantityElement.value);
-  quantity += 1;
-  quantityElement.value = quantity;
-
- 
-  alert(quantityElement.value);
-});
-
-minusBtn.addEventListener("click", function () {
-  let quantity = parseInt(quantityElement.innerHTML);
-  if (quantity > 1) {
-    quantity -= 1;
-    quantityElement.value = quantity;
-  }
-});
-
-
-
-
-
-  </script>
 
   </body>
 </html>
