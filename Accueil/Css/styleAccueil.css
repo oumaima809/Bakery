@@ -1,7 +1,6 @@
 body {
   background-color: #f3f2fa;
   font-family: "EB Garamond", serif;
-  background-color: #144272;
 }
 html {
   scroll-behavior: smooth;
@@ -166,31 +165,6 @@ nav ul li:hover ul a {
   top: 220px;
 }
 
-/*#d {
-    right: 5px;
-    opacity: 0.4;
-    transform: rotate(0deg);
-    transition: all 0.3s ease;
-  }
-  */
-/*#g {
-    left: 0;
-    opacity: 0.4;
-    transform: rotate(180deg);
-    transition: all 0.3s ease;
-  }
-  */
-/*
-  #g:hover {
-    transform: rotate(180deg) scale(1.1);
-    opacity: 0.7;
-  }
-  */
-/*#d:hover {
-    transform: rotate(0deg) scale(1.1);
-    opacity: 0.7;
-  }
-  */
 .first-img {
   width: 100%;
 
@@ -269,7 +243,7 @@ nav ul li:hover ul a {
 }
 
 .sucre h3 {
-  color: red;
+  color: #c46060;
   position: absolute;
   top: 1050px;
   left: 500px;
@@ -302,7 +276,7 @@ nav ul li:hover ul a {
   margin-right: 200px;
 }
 .chocolat h3 {
-  color: red;
+  color: #c46060;
   position: absolute;
   top: 1350px;
   left: 865px;
@@ -318,6 +292,7 @@ nav ul li:hover ul a {
 .titre-categorie {
   position: relative;
   top: 200px;
+  color: #c46060;
   display: inline-block;
   left: 140px;
 }
@@ -401,6 +376,7 @@ nav ul li:hover ul a {
 .titre-best-seller {
   position: relative;
   top: 25px;
+  color: #c46060;
   display: inline-block;
   left: 140px;
 }
@@ -468,7 +444,7 @@ nav ul li:hover ul a {
   margin-top: 200px;
   display: grid;
   padding: 3%;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .div-type {
@@ -485,7 +461,7 @@ nav ul li:hover ul a {
 .descrip-type {
   position: absolute;
   bottom: 70px;
-  left: 180px;
+  left: 140px;
   padding: 30px;
   text-align: left;
 }
@@ -664,10 +640,6 @@ nav ul li:hover ul a {
 .info a:hover {
   color: #c46060;
   text-decoration: none;
-}
-
-.info ul {
-  /* list-style-type: none; */
 }
 
 .div-info .info p {

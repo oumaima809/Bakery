@@ -5,7 +5,7 @@
 ?>
 
 
-<?php
+<!-- <?php
 
      // Vérification et affichage de la variable de session
     if (isset($_SESSION['email'])) {
@@ -15,7 +15,7 @@
         echo "n existe pas";
     }*/
    
-?>
+?> -->
 
 
 <!DOCTYPE html>

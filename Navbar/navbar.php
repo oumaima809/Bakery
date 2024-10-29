@@ -8,13 +8,13 @@
 </head>
 <body>
 <header>
-        <div class="div-compte">
+        <div class="div-compte" id="compte">
           <span class="first-span">Besoin d'aide ? </span>
           <span class="second-span"> Appeler 72313478</span>
-          <a class="inscription" href="../../Inscription/inscription.html"
+          <a class="inscription" href="../Inscription/inscription.php"
             ><span>Inscription</span></a
           >
-          <a class="connexion" href="../../Connexion/connexion.html"
+          <a class="connexion" href="../Connexion/connexion.php"
             ><span>Connexion</span></a
           >
         </div>
@@ -36,12 +36,12 @@
             <li><a href="../A propos/propos.php">A propos</a></li>
 
             <li>
-              <a href="../Favoris/favoris.html"
+              <a href="../Favoris/favoris.php"
                 ><i class="fas fa-heart"></i
               ></a>
             </li>
             <li class="cart">
-              <a href="../cart.html"
+              <a href="../cart.php"
                 ><i class="fas fa-shopping-cart"></i><span>0</span>
               </a>
             </li>
