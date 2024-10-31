@@ -1,3 +1,14 @@
+<?php 
+   session_start();
+  
+
+   $authenticated = false;
+   if(isset($_SESSION['email'])){
+    $authenticated=true;
+   }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

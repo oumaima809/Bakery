@@ -1,23 +1,3 @@
-
-<?php
-    session_start();
-    
-?>
-
-
-<!-- <?php
-
-     // Vérification et affichage de la variable de session
-    if (isset($_SESSION['email'])) {
-        $nomUtilisateur = $_SESSION['email'];
-        echo "Bienvenue, " . $nomUtilisateur;
-    } /*else {
-        echo "n existe pas";
-    }*/
-   
-?> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
   <head>

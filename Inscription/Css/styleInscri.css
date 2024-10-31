@@ -41,6 +41,27 @@
   background: #ea5455;
   margin-top: 30px;
 }
+.conteneur .contenu-welcome{
+  background: #fff;
+  padding: 30px;
+  position: relative;
+  top: 50px;
+  left: 7%;
+  height: 250px;
+  width: 600px;
+  bottom: 135px;
+  padding: 30px;
+  box-shadow: -20px 0 15px rgba(0, 0, 0, 0.2);
+  opacity: 0.9;
+
+  
+}
+.conteneur .contenu-welcome p{
+  margin-bottom: 5px;
+}
+.welcome{
+  margin-bottom: 10px;
+}
 .conteneur .contenu-form,
 .conteneur .login {
   position: relative;
@@ -53,7 +74,7 @@
   position: relative;
   bottom: 17px;
 }
-.conteneur .login {
+.conteneur .login{
   background: #fff;
   padding: 30px;
   position: relative;
@@ -67,7 +88,9 @@
   color: #fff;
   font-size: large;
 }
-.conteneur .contenu-form a {
+
+.conteneur .contenu-welcome a,
+.conteneur .contenu-form a  {
   display: inline-block;
   margin-top: 20px;
   padding: 10px 20px;

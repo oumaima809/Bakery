@@ -1,13 +1,3 @@
-<?php
-  session_start();
-  $authenticated = false;
-  if(isset($_SESSION["email"])){
-    $authenticated =true;
-  }
-
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -35,14 +25,17 @@
         <?php include '../Navbar/navbar.php'?>
         <?php
 
-        
-
+         /*if(isset($authenticated)){
+            header("location: ../Accueil/Accueil.php");
+            exit;
+          }*/
 
 
     $host = 'localhost';
     $dbname = 'bakery';
     $username = 'root';
     $password_ = '';
+    $accountCreated =false;
 
     $expressionMp ="/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/";
     $phoneExpression ="/^(?:(\+|00\d{1,3})?[-]?\d{7,12}|\d{7,12})$/";
@@ -153,42 +146,15 @@
           $statement = $pdo->prepare($query);
           $statement->execute([$nom, $prenom, $email, $phone, $password]);
           $id_client = $pdo->lastInsertId();
-          $statement->close();
+          
 
 
           //************************** A new account is created  ***************************/
 
-          //Save session data
-          $_SESSION["id"] = $id_client;
-          $_SESSION["nom"] =$nom;
-          $_SESSION["prenom"] =$prenom;
-          $_SESSION["email"] =$email;
-          $_SESSION["phone"] =$phone;
-          
-          header("location: /inscription.php");
-          exit;
-          
-
-    
-
-
          
-
-
+          $accountCreated = true;
 
         }
-      
-
-
-
-          
-
-         
-
-
-
-
-
     
         }
     } catch (PDOException $e) {
@@ -198,38 +164,54 @@
         
 
 
-      <div class="premiere-section">
+      
+
+        
+
+        <?php
+           
+           if($accountCreated) echo '
+           <div class="premiere-section">
+           <div class="conteneur">
+           <div class="contenu-welcome">
+             <h1 class="welcome">Bienvenue '.$prenom.' dans BAKERY WORLD</h1>
+            <p>Vous avez réussi l\'enregistrement!</p>
+            <p>voulez vous se connecter?</p>
+            <a href="../Connexion/connexion.php">se connecter</a>
+            </div>
+            </div>
+            </div>';
+
+
+
+           else echo '
+           <div class="premiere-section">
       <div class="conteneur">
         <div class="contenu-form">
           <h3>Backery World</h3>
           <br />
           <p>
-            Backery World est une pâtisserie passionnée par l'art de la
+            Backery World est une pâtisserie passionnée par l\'art de la
             pâtisserie. Nous sommes fiers de créer des produits de qualité
             supérieure, avec les meilleurs ingrédients pour garantir une
             expérience de dégustation inoubliable.
           </p>
           <a href="../A propos/propos.php">savoir plus</a>
         </div>
-        <?php
-           
-           if($authenticated) echo "you have successfully registred!";
-           else echo '
            <div class="login">
           <h2>Créer un compte</h2>
-          <form id="form-inscription" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+          <form id="form-inscription" method="POST" action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'">
             <span class="obligatoire">* Tous les champs sont obligatoires</span>
 
             <input
               type="text"
-              
               name="nom"
               id="nom"
               placeholder="Nom"
               autocomplete="off"
-              value = "<?php echo $nom ; ?>"
+              value = "'. $nom .'"
             />
-            <span class="validation_error"><?php echo $nom_error; ?></span>
+            <span class="validation_error">'.$nom_error.'</span>
 
             <input
               type="text"
@@ -238,9 +220,9 @@
               placeholder="Prénom"
               autocomplete="off"
               
-              value = "<?php echo $prenom ; ?>"
+              value = "'. $prenom .'"
             />
-            <span class="validation_error"><?php echo $prenom_error; ?></span>
+            <span class="validation_error">'. $prenom_error .'</span>
 
 
             <input
@@ -251,21 +233,21 @@
               placeholder="exemple@exemple.com"
               autocomplete="off"
 
-              value = "<?php echo $email ; ?>"
+              value = "'.$email .'"
             />
-            <span class="validation_error"><?php echo $email_error; ?></span>
+            <span class="validation_error">'. $email_error.'</span>
 
             <input
               
-              type="phone"
+              type="tel"
               name="phone"
               id="phone"
               placeholder="Numéro de téléphone"
               autocomplete="off"
 
-              value = "<?php echo $phone ; ?>"
+              value = "'.$phone. '"
             />
-            <span class="validation_error"><?php echo $phone_error; ?></span>
+            <span class="validation_error">'.$phone_error.'</span>
 
 
             <input
@@ -276,7 +258,7 @@
               autocomplete="off"
               
             />
-            <span class="validation_error"><?php echo $password_error; ?></span>
+            <span class="validation_error">'.$password_error.'</span>
 
 
             <input
@@ -287,13 +269,13 @@
               autocomplete="off"
               
             />
-            <span class="validation_error"><?php echo $confirm_password_error; ?></span>
+            <span class="validation_error">'.$confirm_password_error.'</span>
 
 
             <div class="mentions-CB">
               <input id="mon-cb" class="cb" name="checkbox" type="checkbox" />
               <span> <a class="mentions-legales" href="../Mentions/mentions.php"> j\'ai lu les Mentions légales</a> </span>
-              <span class="validation_error"><?php echo $checkbox_error; ?></span>
+              <span class="validation_error">'.$checkbox_error.'</span>
             </div>
 
             <p id="erreur"></p>
