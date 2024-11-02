@@ -12,35 +12,40 @@ try {
 
     // Vérifier si le formulaire a été soumis
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      
+      
         // Récupérer les données du formulaire
         $email = $_POST['email'];
-        $password = md5($_POST['password']); // Crypter le mot de passe avec MD5
-
+        $password =$_POST['password']; // Crypter le mot de passe avec MD5
+       
         // Vérifier que l'adresse email et le mot de passe ne sont pas vides
         if (!empty($email) && !empty($password)) {
             // Vérifier l'existence du client dans la base de données
-            $query = "SELECT COUNT(*) FROM client WHERE adressCl = '$email' AND passCl = '$password'";
-            $result = $pdo->query($query);
-            $count = $result->fetchColumn();
-
-            if ($count == 1) {
-
-              session_start();
+            $statement = $pdo->prepare("SELECT * FROM client WHERE email = ?");
+            $statement->execute([$email]);
+            $user = $statement->fetch(PDO::FETCH_ASSOC);
+            if($user){
+              
+              if(password_verify($password,$user['password'])){
+               session_start();
               $_SESSION['email'] = $email; // Enregistrer l'adresse email dans la session
-                 // Enregistrer le nom dans la session (vous pouvez le récupérer depuis la base de données si nécessaire)
-               
-                // L'utilisateur existe dans la base de données, procéder à la connexion
-                // Vous pouvez rediriger l'utilisateur vers une autre page ici
+              $_SESSION['nom'] = $user['nom'];
+              $_SESSION['prenom'] = $user['prenom'] ;
+              $_SESSION['phone'] = $user['phone'] ;
+              $_SESSION['id'] = $user['id'] ;
+
 
                 header("Location: ../Accueil/Accueil.php");
-
-
-            } else {
+                exit;
+              }
+              else{
                 echo '<p class="erreurCon"> Identifiants invalides. </p>';
+              }
             }
-        } else {
+            else {
             echo '<p class="erreurCon"> Veuillez remplir tous les champs du formulaire.</p>';
         }
+    }
     }
 } catch (PDOException $e) {
     echo 'Erreur de connexion : ' . $e->getMessage();
@@ -76,7 +81,6 @@ try {
     <?php include '../Navbar/navbar.php'?>
     <div class="premiere-section">
       <div class="conteneur">
-        hii
         <div class="contenu-form">
           <h3>Backery World</h3>
           <br />
@@ -86,7 +90,7 @@ try {
             supérieure, avec les meilleurs ingrédients pour garantir une
             expérience de dégustation inoubliable.
           </p>
-          <a href="../A propos/propos.html">savoir plus</a>
+          <a href="../A propos/propos.pho">savoir plus</a>
         </div>
         <div class="login">
           <h2>Connexion</h2>
@@ -112,7 +116,7 @@ try {
             />
             <input class="btn-submit" type="submit" value="Se connecter" />
           
-            <a href="../Inscription/inscription.html">Pas de compte ? créer un compte</a>
+            <a href="../Inscription/inscription.php">Pas de compte ? créer un compte</a>
           </form>
         </div>
       </div>
