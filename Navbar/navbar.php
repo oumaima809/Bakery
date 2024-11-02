@@ -14,7 +14,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styleNavFooter.css" />
     <title>Document</title>
 </head>
 <body>
@@ -22,12 +21,44 @@
         <div class="div-compte" id="compte">
           <span class="first-span">Besoin d'aide ? </span>
           <span class="second-span"> Appeler 72313478</span>
-          <a class="inscription" href="../Inscription/inscription.php"
-            ><span>Inscription</span></a
-          >
-          <a class="connexion" href="../Connexion/connexion.php"
-            ><span>Connexion</span></a
-          >
+          <?php 
+            if(!$authenticated){
+            echo '
+                <a class="inscription" href="../Inscription/inscription.php">
+                    <span>Inscription</span>
+                </a>
+                <a class="connexion" href="../Connexion/connexion.php">
+                  <span>Connexion</span>
+                </a>
+              ';
+            }
+            else {
+               echo '
+               <div class="user" id="userDropdown">
+                  <span><p class="client">'.$_SESSION["prenom"].'</p></span>
+                  <span><i class="fa-solid fa-caret-down"></i></span>
+               </div>
+               <div class="dropdown" id="dropdownContent"> 
+                     
+                     <p class="profile"><i class="fa-solid fa-user"></i>Profile</p>
+                     <a class="logout" href="../Logout/logout.php">
+                       <span><i class="fa-solid fa-right-from-bracket"></i>Logout</span>
+                    </a>
+                    
+                </div>
+               
+            ';
+            }
+           
+            
+
+          
+          
+          
+          
+          ?>
+          
+          
         </div>
         <nav>
           <div class="logo">
@@ -59,5 +90,7 @@
           </ul>
         </nav>
       </header>
+      <script src="../Navbar/navbar.js"></script>
 </body>
+
 </html>
