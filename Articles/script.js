@@ -45,11 +45,23 @@ function hideButtons(i) {
 
 var heartButtons = document.querySelectorAll(".fa-heart");
 for (var i = 0; i < heartButtons.length; i++) {
+  heartButtons[i].addEventListener('submit', function(event) {
+    event.preventDefault(); 
+    console.log('Heart button clicked');
+  }); 
+  
+
+}
+for (var i = 0; i < heartButtons.length; i++) {
   heartButtons[i].addEventListener("click", function () {
+    
+    console.log("clicked");
     this.classList.toggle("fa-heart");
     this.classList.toggle("fa-times");
   });
 }
+
+
 
 const plusBtn = document.getElementById("plus");
 const minusBtn = document.getElementById("minus");
@@ -59,6 +71,7 @@ plusBtn.addEventListener("click", function () {
   let quantity = parseInt(quantityElement.innerHTML);
   quantity += 1;
   quantityElement.innerHTML = quantity.toString();
+  updateQuantity(quantity);
  
 });
 
@@ -68,4 +81,18 @@ minusBtn.addEventListener("click", function () {
     quantity -= 1;
     quantityElement.innerHTML = quantity.toString();
   }
+  updateQuantity(quantity);
 });
+function updateQuantity(newQuantity) {
+  console.log(newQuantity);
+  fetch("updatequantity.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ quantity: newQuantity })
+  })
+  .then(response => response.json())
+  .then(data => console.log("Quantity updated:", data))
+  .catch(error => console.error("Error updating quantity:", error));
+}

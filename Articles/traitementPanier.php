@@ -4,7 +4,7 @@ session_start();
 
 
 $host = 'localhost';
-$dbname = 'patisserie';
+$dbname = 'bakery';
 $username = 'root';
 $password = '';
 
@@ -20,11 +20,11 @@ try {
 
 
 echo $_SESSION['email'];
+$email=$_SESSION['email'];
 $quantity=$_POST['content'];
 $idArt=$_POST['nom'];
-echo 'bbbbb';
-echo $nom;
-$email=$_SESSION['email'];
+
+
 $query = "SELECT * FROM panier WHERE code_article = '$idArt' AND adresse_client = '$email'";
 
 
@@ -37,7 +37,7 @@ if ($result->rowCount() > 0) {
     $pdo->exec($query);
 } else {
     // L'ID de l'article n'existe pas encore, effectuer une requête INSERT pour insérer une nouvelle ligne
-    $query = "INSERT INTO panier (adresse_client,code_article, quantite) VALUES ('$email','$idArt', $quantity)";
+    $query = "INSERT INTO panier (code_article, quantite,adresse_client) VALUES ('$idArt', $quantity,'$email')";
     $pdo->exec($query);
 }
 

@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../Accueil/Css/styleAccueil.css" />
+    <link rel="stylesheet" href="../Navbar/navbar.css" />
+    <link rel="stylesheet" href="../Footer/footer.css" />
     <link rel="stylesheet" href="Css/stylePropos.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />

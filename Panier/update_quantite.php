@@ -12,7 +12,7 @@
 <?php
 
 $host = 'localhost';
-$dbname = 'patisserie';
+$dbname = 'bakery';
 $username = 'root';
 $password = '';
 

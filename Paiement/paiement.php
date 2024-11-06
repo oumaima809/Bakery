@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../Accueil/Css/styleAccueil.css" />
+    <link rel="stylesheet" href="../Navbar/navbar.css" />
+    <link rel="stylesheet" href="../Footer/footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="stylesheet"
@@ -20,49 +21,43 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="compte" class="div-compte">
-      <span class="first-span">Besoin d'aide ? </span>
-      <span class="second-span"> Appeler 72313478</span>
-      <a class="inscription" href="../Inscription/inscription.html"
-        ><span>Inscription</span></a
-      >
-      <a class="connexion" href="../Connexion/connexion.html"
-        ><span>Connexion</span></a
-      >
-    </div>
-    <nav>
-      <div class="logo">
-        <p>Bakery World</p>
-      </div>
-      <ul>
-        <li><a href="../Accueil/Accueil.html">Accueil </a></li>
-        <li>
-          <a href="" class="service">Catégories</a>
-          <ul>
-            <li><a href="../Categorie/macarons.html">Macarons</a></li>
-            <li><a href="../Categorie/cupcakes.html">Cupcakes</a></li>
-            <li><a href="../Categorie/croissant.html">Croissants</a></li>
-            <li><a href="../Categorie/chocolat.html">Chocolats</a></li>
-          </ul>
-        </li>
-        <li><a href="../A propos/propos.html">A propos</a></li>
-        <li>
-          <a href="../Favoris/favoris.html"><i class="fas fa-heart"></i></a>
-        </li>
-        <li class="cart">
-          <a href="../Articles/cart.html"
-            ><i class="fas fa-shopping-cart"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    <?php include "../Navbar/navbar.php"?>
+    <?php
+    
+    $host = 'localhost';
+    $dbname = 'bakery';
+    $username = 'root';
+    $password_ = '';
+    $email = $_SESSION["email"];
+   
 
+    try {
+      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password_);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $query = "select code_article from panier where adresse_client = ? ";
+      $statement = $pdo->prepare($query);
+      $statement->execute([$email]);
+      $articles = $statement->fetchAll(PDO::FETCH_ASSOC);
+      $codes = array_column($articles, 'code_article');
+      
+
+      
+       
+
+
+
+
+
+    } catch (PDOException $e) {
+      echo 'Erreur de connexion : ' . $e->getMessage();
+  }
+  ?>
     <div class="global-premier-div">
       <div class="div-paiement">
         <div class="cordonnees-formulaire">
           <h1>Vos cordonnées</h1>
-          <p>Trabelsi Jihen</p>
-          <p>trabelsjihen23@gmail.com</p>
+          <p><?php echo $_SESSION["prenom"]." ".$_SESSION["nom"] ;?></p>
+          <p><?php echo $_SESSION["email"];?></p>
         </div>
         <div class="info-session">
           <h3>Numéro de la commande N°21009</h3>
@@ -199,119 +194,51 @@
         </div>
       </div>
       <div class="div-panier">
-        <div class="article-achete">
-          <div class="img-achat">
-            <img src="images/articleAchete.jpg" alt="" />
-            <div class="nombre-achat">
-              <p>2</p>
-            </div>
-          </div>
-          <div class="descrip-achat">
-            <h3>Cupcake chocolat</h3>
-            <p>Poids net : 500g</p>
-          </div>
-          <p>17000 DT</p>
-        </div>
+       
+          <?php 
+         
+            $total = 6150;
+            foreach ($codes as $article) {
+              $query = "SELECT * FROM article where idArt=$article";
+              $stmt = $pdo->query($query);
+              $product = $stmt->fetch(PDO::FETCH_ASSOC);
+              $total += (int) $product['prixArt'];
 
-        <div class="article-achete">
-          <div class="img-achat">
-            <img src="images/articleAchete.jpg" alt="" />
-            <div class="nombre-achat">
-              <p>2</p>
-            </div>
-          </div>
-          <div class="descrip-achat">
-            <h3>Cupcake Noisette</h3>
-            <p>Poids net : 500g</p>
-          </div>
-          <p>15000 DT</p>
-        </div>
+              echo      
+                  '<div class="article-achete">
+                      <div class="img-achat">
+                        <img src="../Categorie/'.$product['imgArt'].'" alt="" />
+                        <div class="nombre-achat">
+                          <p>2</p>
+                        </div>
+                  </div> 
+                  <div class="descrip-achat">
+                        <h3>'.$product['nomArt'].'</h3>
+                        <p>Poids net : 500g</p>
+                      </div>
+                      <p>'.$product['prixArt'].' DT</p>
+                  </div>';
+
+
+            }
+         
+
+         
+      
+      
+      
+      ?>
+  
 
         <div class="total-achat">
           <h3>Total</h3>
           <span>Taxes de 6,150 DT incluse</span>
-          <span class="montant">110,500 DT</span>
+          <span class="montant"><?php echo $total;?></span>
         </div>
       </div>
     </div>
 
-    <footer>
-      <div class="div-general-info">
-        <div class="position">
-          <i class="info-icon fas fa-map-marker-alt"></i>
-          <div class="descrip-info">
-            <h3>Nos Adresses</h3>
-            <p>Centre Urbain Nord</p>
-          </div>
-        </div>
-        <div class="contact">
-          <i class="info-icon fa-solid fa-phone"></i>
-          <div class="descrip-info">
-            <h3>Contacter nous</h3>
-            <p>+216 72313478</p>
-          </div>
-        </div>
-        <div class="email">
-          <i class="info-icon fa-solid fa-envelope"></i>
-          <div class="descrip-info">
-            <h3>Email</h3>
-            <a href="mailto:Bakery-world@gmail.com">Bakery-world@gmail.com</a>
-          </div>
-        </div>
-      </div>
-      <hr class="separateur-hr" />
-      <div class="div-info">
-        <div class="info">
-          <h4>Bakery World</h4>
-          <hr />
-          <p>
-            Backery World est une pâtisserie passionnée par l'art de la
-            pâtisserie. Nous sommes fiers de créer des produits de qualité
-            supérieure, avec les meilleurs ingrédients pour garantir une
-            expérience de dégustation inoubliable. Chez Backery World, nous
-            proposons une large sélection de pâtisseries allant des classiques
-            traditionnels aux créations les plus innovantes. Nous sommes
-            déterminés à satisfaire les papilles de nos clients en offrant un
-            large choix de produits frais et savoureux
-          </p>
-        </div>
-        <div class="info liens">
-          <h4>Liens utiles</h4>
-          <hr />
-          <ul>
-            <li>
-              <a href="../Mentions/mentions.html">Mentions légales </a>
-            </li>
-
-            <li><a href="../A propos/propos.html">A propos de nous</a></li>
-            <li>
-              <a href="../Commentaire/commentaire.html"
-                >Exprimer votre Feedback</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <div class="reseaux-soc info">
-          <h4>Suivez nous</h4>
-          <hr />
-          <a
-            href="https://www.facebook.com/groups/292204118759292/"
-            target="_blank"
-            ><i class="fa-brands fa-facebook sm faceb"></i
-          ></a>
-          <a href="https://www.instagram.com/world.of.bakery/" target="_blank"
-            ><i class="fab fa-instagram sm insta"></i
-          ></a>
-          <a href=""><i class="fab fa-twitter sm twi"></i></a>
-          <a href=""><i class="fab fa-pinterest sm pin"></i></a>
-        </div>
-      </div>
-
-      <div class="copyrights">
-        <p>Copyright © 2023 Backery World</p>
-      </div>
-    </footer>
+   <?php include "../Footer/footer.php"?>
 
     <script src="js/paiement.js"></script>
   </body>

@@ -83,7 +83,7 @@
               ></a>
             </li>
             <li class="cart">
-              <a href="../cart.php"
+              <a href="../Panier/panier.php"
                 ><i class="fas fa-shopping-cart"></i><span>0</span>
               </a>
             </li>

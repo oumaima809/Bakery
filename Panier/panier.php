@@ -1,18 +1,12 @@
 
-<?php
-
-
-    session_start();
-    
-    ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../Accueil/Css/styleAccueil.css" />
+    <link rel="stylesheet" href="../Navbar/navbar.css" />
+    <link rel="stylesheet" href="../Footer/footer.css" />
     <link rel="stylesheet" href="Css/stylePanier.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
@@ -27,80 +21,58 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="compte" class="div-compte">
-      <span class="first-span">Besoin d'aide ? </span>
-      <span class="second-span"> Appeler 72313478</span>
-      <a class="inscription" href="inscription.html"
-        ><span>Inscription</span></a
-      >
-      <a class="connexion" href="connexion.html"><span>Connexion</span></a>
-    </div>
-    <nav>
-      <div class="logo">
-        <p>Bakery World</p>
-      </div>
-      <ul>
-        <li><a href="index.html">HOME</a></li>
-        <li>
-          <a href="" class="service">SERVICES</a>
-          <ul>
-            <li><a href="">Amandes</a></li>
-            <li><a href="">Macarons</a></li>
-            <li><a href="">Traditions</a></li>
-            <li><a href="">Chocolat</a></li>
-          </ul>
-        </li>
-        <li><a href="propos.html">ABOUT</a></li>
-        <li>
-          <a href=""><i class="fas fa-heart"></i></a>
-        </li>
-        <li>
-          <a href=""><i class="fas fa-shopping-cart"></i> </a>
-        </li>
-      </ul>
-    </nav>
+    <?php include '../Navbar/navbar.php' ?>
     <?php
 $host = 'localhost';
-$dbname = 'patisserie';
+$dbname = 'bakery';
 $username = 'root';
 $password = '';
 
+
 try {
 
-  error_reporting(E_ERROR | E_PARSE);
-ini_set('display_errors', 0);
-    // Création de l'instance PDO
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+      error_reporting(E_ERROR | E_PARSE);
+      ini_set('display_errors', 0);
+      $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $code_article = $_POST["code_Art"];
+        $email = $_SESSION["email"];
+        if($code_article){
+               $query = "DELETE FROM panier WHERE adresse_client = ? AND code_article = ?";
+              $stmt = $pdo->prepare($query);
+              $stmt->execute([$email,$code_article]);
+        }
+        else{
+          $query = "DELETE FROM panier WHERE adresse_client = ? ";
+          $stmt = $pdo->prepare($query);
+          $stmt->execute([$email]);
+        }
+   
 
-    // Configurer le mode d'erreur PDO sur Exception
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      
+      
+        
+    }
 
-    // Autres configurations souhaitées
-    // ...
-
-    // Utiliser $pdo pour interagir avec la base de données
-    // ...
 
 } catch (PDOException $e) {
-    // Gérer les erreurs de connexion
+
     echo 'Erreur de connexion : ' . $e->getMessage();
 }
+
+
+
 ?>
     <div class="conteneur-general">
       <div class="contenu-panier">
 
       <?php
-session_start();
-error_reporting(E_ERROR | E_PARSE);
 
-$host = 'localhost';
-$dbname = 'patisserie';
-$username = 'root';
-$password = '';
+
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ 
 
     $adresseClient = $_SESSION['email'];
 
@@ -146,10 +118,10 @@ try {
             </div>
 
             <div class="total-article">
-                <p class="prix-total">' . $article['prixArt']*$article['quantite']. '</p>
-                <form action="suppression_article.php" method="POST">
                 
-              <button type="submit" value="'.$article['code_article'].'  " > Supprimer</button>
+                <form  method="POST">
+                
+              <button class="btn-vider-retour" type="submit" name="code_Art" value="'.$article['code_article'].'  " > Supprimer</button>
 
                 </form>
             </div>
@@ -168,12 +140,11 @@ try {
         <div class="vider-continuer">
           <hr />
           <button class="btn-vider-retour">
-            <a href="#" class="">Continuer mes achats</a>
+            <a href="../Paiement/paiement.php" class="">Continuer mes achats</a>
           </button>
-
-          <button class="btn-vider-retour">
-            <a href="#">Vider le panier</a>
-          </button>
+          <form method="POST">
+  <button type="submit" class="btn-vider-retour">Vider le panier</button>
+</form>
         </div>
       </div>
       <div class="facture">
@@ -190,78 +161,15 @@ echo '<span class="span2">'.$total.'
        
         <br />
         <hr />
-        <button class="paiement-btn">Paiement</button>
+        <button class="paiement-btn">
+        <a href="../Paiement/paiement.php" class="">Paiement</a>
+
+        </button>
       </div>
     </div>
     <input type="text" id="outputText" />
 
-    <footer>
-      <div class="div-general-info">
-        <div class="position">
-          <i class="info-icon fas fa-map-marker-alt"></i>
-          <div class="descrip-info">
-            <h3>Nos Adresses</h3>
-            <p>Centre Urbain Nord</p>
-          </div>
-        </div>
-        <div class="contact">
-          <i class="info-icon fa-solid fa-phone"></i>
-          <div class="descrip-info">
-            <h3>Contacter nous</h3>
-            <p>+216 72313478</p>
-          </div>
-        </div>
-        <div class="email">
-          <i class="info-icon fa-solid fa-envelope"></i>
-          <div class="descrip-info">
-            <h3>Email</h3>
-            <a href="mailto:Bakery-world@gmail.com">Bakery-world@gmail.com</a>
-          </div>
-        </div>
-      </div>
-      <hr class="separateur-hr" />
-      <div class="div-info">
-        <div class="info">
-          <h4>Bakery World</h4>
-          <hr />
-          <p>
-            Backery World est une pâtisserie passionnée par l'art de la
-            pâtisserie. Nous sommes fiers de créer des produits de qualité
-            supérieure, avec les meilleurs ingrédients pour garantir une
-            expérience de dégustation inoubliable. Chez Backery World, nous
-            proposons une large sélection de pâtisseries allant des classiques
-            traditionnels aux créations les plus innovantes. Nous sommes
-            déterminés à satisfaire les papilles de nos clients en offrant un
-            large choix de produits frais et savoureux
-          </p>
-        </div>
-        <div class="info liens">
-          <h4>Liens utiles</h4>
-          <hr />
-          <ul>
-            <li>
-              <a href="">Mentions légales </a>
-            </li>
-
-            <li><a href="">A propos de nous</a></li>
-            <li><a href="">Exprimer votre Feedback</a></li>
-          </ul>
-        </div>
-
-        <div class="reseaux-soc info">
-          <h4>Suivez nous</h4>
-          <hr />
-          <a href="#"><i class="fa-brands fa-facebook sm faceb"></i></a>
-          <a href="#"><i class="fab fa-instagram sm insta"></i></a>
-          <a href="#"><i class="fab fa-twitter sm twi"></i></a>
-          <a href="#"><i class="fab fa-pinterest sm pin"></i></a>
-        </div>
-      </div>
-
-      <div class="copyrights">
-        <p>Copyright © 2023 Backery World</p>
-      </div>
-    </footer>
+    <?php include '../Footer/footer.php' ?>
     <script src="panier.js"></script>
     <script src="panierSRC.js"></script>
   </body>

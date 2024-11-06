@@ -1,11 +1,24 @@
-<!--------------------------------- Maintaining connection ----------------------------------->
+
 <?php
 
-    session_start();
-    
-?>
+            $host = 'localhost';
+            $dbname = 'bakery';
+            $username = 'root';
+            $password = '';
 
+            try {
+                $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+            } catch (PDOException $e) {
+                echo 'Erreur de connexion : ' . $e->getMessage();
+            }
+            
+           
+
+           
+        ?>
+ 
 
 
 <!DOCTYPE html>
@@ -42,22 +55,7 @@
 
         <!--------------------------------- Maintaining database connection ------------------------>
 
-        <?php
-
-            $host = 'localhost';
-            $dbname = 'bakery';
-            $username = 'root';
-            $password = '';
-
-            try {
-                $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-                $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-            } catch (PDOException $e) {
-                echo 'Erreur de connexion : ' . $e->getMessage();
-            }
-        ?>
-
+        
 
 
    
@@ -184,7 +182,7 @@
                       <i class="fas fa-plus"></i>
                     </button>
                   </td>
-                  <td><p class="cell2" id="quantity">1</p></td>
+                  <td><p class="cell2" id="quantity" name="quantity">1</p></td>
                   
                   <td class="cell3">
                     <button class="minus-btn" id="minus">
@@ -203,21 +201,25 @@
               <table id="table2">
                 <tr>
                   <td class="cellule2" id="cel1">
-                    <button id="product-BTN">
-                      <i class="fas fa-heart button-heart"></i>
-                    </button>
+                    <form method="POST"   >
+                    <input type="hidden" name="heart"  value="15">
+                      <button type="submit" id="product-BTN">
+                        <i  class="fas fa-heart button-heart"></i>
+                      </button>
+                    </form> 
+                    
                   </td>
                   <td class="cellule2" id="cel2">
             <form method="POST" action="traitementPanier.php" >
 
             <input type="hidden" name="nom" value="<?php echo $_GET['nom']; ?>">
 
-            <input type="hidden" name="content" id="contente" value="0">
+            <input type="hidden" name="content" id="contente" value="1">
 
                   <input class="add-cart" type="submit" value="AJOUTER AU PANIER"></form>
                   </td>
                   <td class="cellule2" id="cel3">
-                    <a href="../../Paiement/paiement.html">ACHAT DIRECT</a>
+                    <a href="../../Paiement/paiement.php">ACHAT DIRECT</a>
                   </td>
                 </tr>
               </table>
