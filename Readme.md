@@ -22,25 +22,18 @@ This project is an e-commerce platform that allows users to browse, search, and 
    ```bash
    git clone https://github.com/oumaima809/Bakery-World.git
    cd Bakery-World
-4. **Start the XAMPP server**:
+2. **Start the XAMPP server**:
    - Open XAMPP and start Apache and MySQL.
 
-5. **Set up the Database** (see [Database Setup](#database-setup) below for more details):
+3. **Set up the Database** (see [Database Setup](#database-setup) below for more details):
    - Open phpMyAdmin (`http://localhost/phpmyadmin`) and create a new database named `bakery_database`.
    - Import the provided `database/database.sql` file to set up the necessary tables and data.
 
-6. **Run the Application**:
+4. **Run the Application**:
    - Ensure Apache and MySQL are running in XAMPP.
    - Open a web browser and navigate to `http://localhost/project-folder` to access the website.
-
-7. **(Optional) Start the Development Server**:
-   - If you're using a framework like Node.js with React for the frontend, you may need to run:
-     ```bash
-     npm start
-     ```
-   - Then, navigate to the specified local URL (e.g., `http://localhost:3000`).
-
-8. **Test the Setup**:
+   - 
+5. **Test the Setup**:
    - Verify that you can access the homepage, register an account, log in, and add items to the cart. Ensure the checkout flow works if you've set up a mock payment system.
 
 ---
